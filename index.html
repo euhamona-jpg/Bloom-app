@@ -1,201 +1,71 @@
 <!doctype html>
-<html lang="et">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f7f4ee">
-<title>Bloom 🌸</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f4ee"><title>Bloom 🌸</title>
 <style>
-:root{--bg:#f7f4ee;--card:#fffdf9;--ink:#24352f;--muted:#707773;--green:#dcece4;--pink:#f5cddd;--lav:#e8e1f3;--danger:#f3dddd;--blue:#1681df}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-body{padding-bottom:88px}
-.app{max-width:560px;margin:auto;min-height:100vh}
-header{display:flex;justify-content:space-between;align-items:center;padding:22px 20px 10px;font-weight:700}
-.logo{font-size:26px}.version{font-size:13px;color:var(--muted);font-weight:500}
-main{padding:10px 18px 28px}
-.screen{display:none}.screen.active{display:block}
-.hero{padding:20px 4px 18px}
-.flower{font-size:64px;margin:8px 0 14px}
-h1{font-size:38px;line-height:1.08;margin:0 0 12px;letter-spacing:-1px}
-h2{font-size:27px;margin:8px 0 8px}
-h3{margin:0 0 7px;font-size:19px}
-p{font-size:17px;line-height:1.48;margin:8px 0;color:var(--muted)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.card{background:var(--card);border-radius:24px;padding:20px;min-height:145px;box-shadow:0 7px 25px rgba(36,53,47,.07);border:1px solid rgba(36,53,47,.04)}
-button{font:inherit;cursor:pointer}
-.card button,.action{width:100%;height:100%;text-align:left;background:none;border:0;padding:0}
-.icon{font-size:34px;margin-bottom:15px}
-.link{color:var(--blue);font-size:18px;font-weight:700}
-.wide{grid-column:1/-1;background:var(--green)}
-.danger{background:var(--danger)}
-.soft{background:var(--lav)}
-.back{border:0;background:none;color:var(--muted);font-size:17px;padding:5px 0 15px}
-.moods{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
-.mood{border:0;background:var(--card);border-radius:20px;padding:18px;text-align:left;font-size:17px;box-shadow:0 5px 18px rgba(36,53,47,.06)}
-.mood span{font-size:30px;display:block;margin-bottom:7px}
-.chat{display:flex;flex-direction:column;gap:10px;margin:18px 0}
-.msg{max-width:88%;padding:13px 15px;border-radius:18px;line-height:1.42;font-size:16px}
-.bloom{background:var(--green);align-self:flex-start}.me{background:var(--card);align-self:flex-end}
-.inputrow{display:flex;gap:8px;position:sticky;bottom:76px;background:var(--bg);padding:10px 0}
-.inputrow input{flex:1;min-width:0;border:1px solid #d7ddd8;border-radius:18px;padding:13px 15px;font-size:16px;background:white}
-.send{border:0;border-radius:18px;padding:0 17px;background:var(--ink);color:white;font-weight:700}
-.quest{background:var(--green);border-radius:24px;padding:22px;margin-top:18px}
-.quest button{border:0;background:var(--ink);color:#fff;padding:13px 18px;border-radius:16px;margin-top:12px;font-weight:700}
-.done{opacity:.65;text-decoration:line-through}
-article{background:var(--card);border-radius:20px;padding:18px;margin:12px 0}
-.nav{position:fixed;z-index:5;bottom:0;left:0;right:0;background:rgba(255,253,249,.96);border-top:1px solid #e1e3df;display:flex;justify-content:center}
-.navin{width:min(560px,100%);display:grid;grid-template-columns:repeat(4,1fr)}
-.nav button{border:0;background:none;padding:11px 4px 13px;color:var(--muted);font-size:13px}
-.nav b{display:block;font-size:25px;margin-bottom:3px}
-.notice{font-size:12px;color:var(--muted);margin-top:15px;text-align:center}
-a{color:var(--blue)}
-@media(max-width:380px){h1{font-size:33px}.grid{gap:10px}.card{padding:16px}.link{font-size:16px}}
-</style>
-</head>
+:root{--bg:#f7f4ee;--card:#fffdf9;--ink:#25352e;--muted:#6c7771;--green:#789b86;--soft:#e8eee9;--danger:#f5d9d5}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(#faf8f3,#f4f1ea);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}
+.app{max-width:540px;margin:auto;min-height:100vh;padding-bottom:90px}.top{padding:18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#f7f4eef5;backdrop-filter:blur(8px);z-index:5}.logo{font-size:27px;font-weight:800}.version{font-size:11px;color:var(--muted)}
+.langselect{border:1px solid #d8dfd9;border-radius:14px;padding:7px 9px;background:white;color:var(--ink);font-weight:700}
+main{padding:8px 18px}.screen{display:none}.screen.active{display:block}.hero{padding:18px 3px 20px}.flower{font-size:72px}.hero h1{font-size:30px;line-height:1.12;margin:8px 0}.hero p,.sub{color:var(--muted);line-height:1.5}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card,.choice{border:0;border-radius:22px;background:var(--card);color:var(--ink);box-shadow:0 5px 22px #26352e0b;text-align:left;cursor:pointer}.card{padding:18px;min-height:125px}.card.wide{grid-column:1/-1}.card.danger{background:var(--danger)}.ico{font-size:28px}.card b{display:block;margin-top:9px}.card span{font-size:12px;color:var(--muted)}
+.back{border:0;background:none;color:var(--muted);font-size:15px;padding:8px 0;cursor:pointer}h2{font-size:27px;margin:8px 0}.choices{display:grid;gap:10px;margin-top:18px}.choice{padding:15px;font-size:16px;width:100%}
+.chat{display:flex;flex-direction:column;gap:10px;margin:16px 0}.msg{max-width:88%;padding:12px 14px;border-radius:18px;line-height:1.48;white-space:pre-line}.bmsg{background:var(--soft);align-self:flex-start}.umsg{background:#e7dfef;align-self:flex-end}.composer{display:flex;gap:8px;position:sticky;bottom:72px;background:#f7f4eef2;padding:8px 0}.composer input{flex:1;border:1px solid #d9ded9;border-radius:22px;padding:13px 15px;font-size:15px;background:white}.send,.quest button{border:0;border-radius:20px;background:var(--green);color:white;font-weight:700;cursor:pointer}.send{padding:0 17px}.quest{padding:18px;border-radius:22px;background:var(--soft);margin-top:16px}.quest button{padding:13px 17px;margin-top:8px}.done{min-height:24px;color:var(--green);font-weight:700}.article{background:var(--card);border-radius:20px;padding:17px;margin:10px 0;line-height:1.5}.article b{display:block;margin-bottom:6px}.notice{font-size:12px;color:var(--muted);line-height:1.4;margin-top:14px}.nav{position:fixed;bottom:0;left:0;right:0;background:#fffdf9f5;border-top:1px solid #e4e0d8;z-index:10}.navin{max-width:540px;margin:auto;display:flex;justify-content:space-around;padding:9px 4px}.nav button{border:0;background:none;color:var(--muted);font-size:11px;cursor:pointer}.ni{display:block;font-size:21px;margin-bottom:2px}
+@media(max-width:390px){.grid{grid-template-columns:1fr}.card.wide{grid-column:auto}.hero h1{font-size:27px}}
+</style></head>
 <body>
 <div class="app">
-<header><div class="logo">🌸 Bloom</div><div class="version">v0.2 · demo</div></header>
+<header class="top"><div class="logo">🌸 Bloom</div><div style="display:flex;gap:8px;align-items:center"><select id="language" class="langselect" aria-label="Language" onchange="changeLanguage(this.value)"><option value="en">English</option><option value="et">Eesti</option><option value="fi">Suomi</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="es">Español</option></select><span class="version">v0.7</span></div></header>
 <main>
-
-<section id="home" class="screen active">
-<div class="hero"><div class="flower">🌸</div><h1>You don't have to bloom all at once.</h1><p>Hi, I'm Bloom. I'm glad you're here.</p></div>
-<div class="grid">
-<div class="card"><button onclick="show('mood')"><div class="icon">💛</div><div class="link">How am I feeling?</div><p>Check in with yourself</p></button></div>
-<div class="card"><button onclick="startChat()"><div class="icon">💬</div><div class="link">Talk to Bloom</div><p>I'm here to listen</p></button></div>
-<div class="card"><button onclick="show('quest')"><div class="icon">🎮</div><div class="link">Bloom Quest</div><p>One small step</p></button></div>
-<div class="card"><button onclick="show('book')"><div class="icon">📖</div><div class="link">Mental Health A–Z</div><p>Simple explanations</p></button></div>
-<div class="card wide"><button onclick="show('human')"><div class="icon">🫶</div><div class="link">Talk to a real person</div><p>Sometimes a real person is the right next step.</p></button></div>
-<div class="card danger wide"><button onclick="show('crisis')"><div class="icon">🆘</div><div class="link">I need help now</div><p>If you may be in immediate danger, get human help now.</p></button></div>
-<div class="card soft wide"><button onclick="show('parent')"><div class="icon">👨‍👩‍👧</div><div class="link">My child needs help</div><p>Support for parents and caregivers.</p></button></div>
-</div>
-<div class="notice">Demo prototype. Bloom is AI support, not a doctor or therapist.</div>
-</section>
-
-<section id="mood" class="screen">
-<button class="back" onclick="show('home')">← Back</button><h2>How are you feeling?</h2><p>You don't need the perfect words. Pick what feels closest.</p>
-<div class="moods">
-<button class="mood" onclick="mood('Sad','😔')"><span>😔</span>Sad</button>
-<button class="mood" onclick="mood('Anxious','😰')"><span>😰</span>Anxious</button>
-<button class="mood" onclick="mood('Lonely','🥺')"><span>🥺</span>Lonely</button>
-<button class="mood" onclick="mood('Angry','😡')"><span>😡</span>Angry</button>
-<button class="mood" onclick="mood('Stressed','😩')"><span>😩</span>Stressed</button>
-<button class="mood" onclick="mood('Hurt','💔')"><span>💔</span>Hurt</button>
-<button class="mood" onclick="mood('Exhausted','😴')"><span>😴</span>Exhausted</button>
-<button class="mood" onclick="mood('I don't know','😶')"><span>😶</span>I don't know</button>
+<section id="home" class="screen active"><div class="hero"><div class="flower">🌸</div><h1 id="homeTitle"></h1><p id="homeIntro"></p></div><div class="grid">
+<button class="card" onclick="showScreen('mood')"><div class="ico">💛</div><b id="bFeel"></b><span id="sFeel"></span></button>
+<button class="card" onclick="showScreen('chat')"><div class="ico">💬</div><b id="bChat"></b><span id="sChat"></span></button>
+<button class="card" onclick="showScreen('quest')"><div class="ico">🎮</div><b>Bloom Quest</b><span id="sQuest"></span></button>
+<button class="card" onclick="showScreen('aabits')"><div class="ico">📖</div><b id="bAabits"></b><span id="sAabits"></span></button>
+<button class="card wide" onclick="showScreen('human')"><div class="ico">🫶</div><b id="bHuman"></b><span id="sHuman"></span></button>
+<button class="card wide danger" onclick="showScreen('crisis')"><div class="ico">🆘</div><b id="bCrisis"></b><span id="sCrisis"></span></button>
 </div></section>
 
-<section id="chat" class="screen">
-<button class="back" onclick="show('home')">← Back</button><h2>Talk to Bloom 🌸</h2>
-<p>I'm listening. You can write in Estonian or English.</p>
-<div id="messages" class="chat"></div>
-<div class="inputrow"><input id="text" placeholder="Write what is on your mind…" onkeydown="if(event.key==='Enter')send()"><button class="send" onclick="send()">Send</button></div>
-<div class="notice">This prototype uses simple demo responses. It is not connected to a real AI yet.</div>
-</section>
-
-<section id="quest" class="screen">
-<button class="back" onclick="show('home')">← Back</button><h2>Bloom Quest 🌱</h2><p>You don't have to fix everything. Just one small step.</p>
-<div class="quest" id="questBox"><h3>Today's small mission</h3><p id="questText">Open a window or step outside for 5 minutes.</p><button onclick="completeQuest()">I did it 🌱</button></div>
-<p id="questDone"></p>
-</section>
-
-<section id="book" class="screen">
-<button class="back" onclick="show('home')">← Back</button><h2>Mental Health A–Z 📖</h2><p>Short, simple explanations. Learning about mental health can make the next step easier.</p>
-<article><h3>Anxiety</h3><p>Anxiety can make your body and thoughts feel constantly alert. It can include worry, tension, racing thoughts or physical symptoms.</p></article>
-<article><h3>Depression</h3><p>Depression is more than simply feeling sad. It can affect mood, energy, sleep, motivation and interest in things you normally care about.</p></article>
-<article><h3>Loneliness</h3><p>You can feel lonely even when other people are around. Connection, one small contact at a time, can sometimes help.</p></article>
-<article><h3>Burnout</h3><p>Long-term stress can leave you emotionally and physically exhausted. Rest, support and reducing the load can be important steps.</p></article>
-</section>
-
-<section id="human" class="screen">
-<button class="back" onclick="show('home')">← Back</button><h2>Talk to a real person 🫶</h2>
-<p>Sometimes AI is not what you need. A trained human can be the next step.</p>
-<article><h3>Ask a person</h3><p>In the future, Bloom can let you send a question to a trained real person who can respond.</p><p><b>Important:</b> Email or messaging is not an emergency service.</p></article>
-<div class="card"><h3>Bloom's promise</h3><p>AI should help people reach human support when human support is what they need.</p></div>
-</section>
-
-<section id="parent" class="screen">
-<button class="back" onclick="show('home')">← Back</button><h2>My child needs help 👨‍👩‍👧</h2>
-<p>You don't have to know exactly what to do. Start with the next small step.</p>
-<article><h3>My child doesn't want to go to school</h3><p>Listen first. Ask what feels hardest, without immediately blaming or forcing an explanation.</p></article>
-<article><h3>I'm worried about bullying</h3><p>Take the concern seriously. Keep notes of what is happening and involve the school and appropriate professionals when needed.</p></article>
-<article><h3>My child says they don't want to live</h3><p>Take this seriously. Stay with the child, seek immediate professional help, and use emergency services if there is immediate danger.</p></article>
-</section>
-
-<section id="crisis" class="screen">
-<button class="back" onclick="show('home')">← Back</button><h2>I'm glad you told me. ❤️</h2>
-<p>If you are thinking about hurting yourself or you may be in immediate danger, please don't stay alone.</p>
-<article><h3>Right now</h3><p>Go to a trusted person and tell them clearly that you need help. Move away from anything you could use to hurt yourself.</p><p>If you have already hurt yourself, taken an overdose, or believe you may act now, contact your local emergency service immediately.</p></article>
-<div class="card"><h3>Estonia</h3><p>Emergency number: <b>112</b></p><p>If you are elsewhere, use your local emergency number or a local crisis service.</p></div>
-</section>
-
-</main>
-</div>
-
-<nav class="nav"><div class="navin">
-<button onclick="show('home')"><b>🏠</b>Home</button>
-<button onclick="show('mood')"><b>💛</b>Feel</button>
-<button onclick="startChat()"><b>💬</b>Bloom</button>
-<button onclick="show('quest')"><b>🌱</b>Quest</button>
-</div></nav>
-
+<section id="mood" class="screen"><button class="back" onclick="showScreen('home')" id="backMood"></button><h2 id="moodTitle"></h2><p class="sub" id="moodSub"></p><div class="choices" id="moodChoices"></div></section>
+<section id="chat" class="screen"><button class="back" onclick="showScreen('home')" id="backChat"></button><h2 id="chatTitle"></h2><div id="chatbox" class="chat"></div><div class="composer"><input id="input" type="text"><button class="send" onclick="sendMessage()" id="sendBtn"></button></div><div class="notice" id="chatNotice"></div></section>
+<section id="quest" class="screen"><button class="back" onclick="showScreen('home')" id="backQuest"></button><h2>Bloom Quest 🌱</h2><p class="sub" id="questSub"></p><div class="quest"><b id="qtitle"></b><p id="qtext"></p><button onclick="completeQuest()" id="qbutton"></button></div><p id="qdone" class="done"></p></section>
+<section id="aabits" class="screen"><button class="back" onclick="showScreen('home')" id="backAabits"></button><h2 id="aabitsTitle"></h2><p class="sub" id="aabitsSub"></p><div id="articles"></div></section>
+<section id="human" class="screen"><button class="back" onclick="showScreen('home')" id="backHuman"></button><h2 id="humanTitle"></h2><p class="sub" id="humanSub"></p><div class="article"><b id="humanSoonTitle"></b><span id="humanSoonText"></span></div><button class="choice" onclick="humanAlert()" id="humanButton"></button></section>
+<section id="crisis" class="screen"><button class="back" onclick="showScreen('home')" id="backCrisis"></button><h2 id="crisisTitle"></h2><p class="sub" id="crisisSub"></p><div class="choices"><button class="choice" onclick="crisisAlert(1)" id="crisis1"></button><button class="choice" onclick="crisisAlert(2)" id="crisis2"></button><button class="choice" onclick="showScreen('human')" id="crisis3"></button></div></section>
+</main></div>
+<nav class="nav"><div class="navin"><button onclick="showScreen('home')"><span class="ni">🏠</span><span id="navHome"></span></button><button onclick="showScreen('mood')"><span class="ni">💛</span><span id="navFeel"></span></button><button onclick="showScreen('chat')"><span class="ni">💬</span><span id="navBloom"></span></button><button onclick="showScreen('quest')"><span class="ni">🌱</span><span id="navQuest"></span></button></div></nav>
 <script>
-const ids=['home','mood','chat','quest','book','human','parent','crisis'];
-function show(id){
- ids.forEach(x=>{const e=document.getElementById(x);if(e)e.classList.toggle('active',x===id)});
- window.scrollTo(0,0);
-}
-function add(who,text){
- const box=document.getElementById('messages');
- const d=document.createElement('div');
- d.className='msg '+(who==='Bloom'?'bloom':'me');
- d.textContent=text;
- box.appendChild(d);
- box.scrollTop=box.scrollHeight;
-}
-function startChat(){
- show('chat');
- const box=document.getElementById('messages');
- if(!box.children.length)add('Bloom','Hei. Mina olen Bloom. 🌸 Ma kuulan. Sa ei pea mulle kõike korraga rääkima. Kuidas sul praegu päriselt läheb?');
- setTimeout(()=>document.getElementById('text').focus(),100);
-}
-function mood(name,emoji){
- show('chat');
- add('You',emoji+' '+name);
- const replies={
-  Sad:'Mul on kahju, et sul on praegu raske. 🌸 Kas tahad mulle rääkida, mis sind kõige rohkem kurvastab?',
-  Anxious:'Ärevus võib panna keha ja mõtted väga valjult tööle. Teeme ühe väikese sammu. Mis on praegu kõige tugevam — mõtted, keha või olukord?',
-  Lonely:'Üksindus võib olla väga valus isegi siis, kui inimesed on su ümber. Kas tahad rääkida sellest, kellest või millest sa kõige rohkem puudust tunned?',
-  Angry:'Ma kuulen, et sinus on praegu palju viha. Mis juhtus, mis selle viha käivitas?',
-  Stressed:'Tundub, et sul on praegu palju kanda. Me ei pea kõike korraga lahendama. Mis on üks asi, mis praegu kõige rohkem survet tekitab?',
-  Hurt:'Mul on kahju. ❤️ Sa ei pea oma valu väiksemaks tegema. Kas tahad mulle rääkida, mis juhtus?',
-  Exhausted:'Sa ei pea praegu kõike ära tegema. Puhkus on ka vajalik. Mis on üks asi, millest saaksime täna natuke koormust maha võtta?',
-  "I don't know":'See on täiesti okei. Mõnikord on sees nii palju asju, et õiget sõna on raske leida. Võime alustada lihtsalt sellest, mis praegu kõige rohkem tunda annab.'
- };
- setTimeout(()=>add('Bloom',replies[name]||'Ma kuulan. Räägi mulle nii palju või nii vähe, kui praegu jaksad.'),250);
-}
-function reply(t){
- const s=t.toLowerCase();
- if(s.includes('suicide')||s.includes('kill myself')||s.includes('end my life')||s.includes('enesetapp')||s.includes('tapan ennast')||s.includes('ei taha elada')||s.includes('endale haiget')) return 'Mul on hea meel, et sa mulle sellest ütlesid. ❤️ Kui sa oled praegu otseses ohus või oled endale juba midagi teinud, palun ära jää üksi ja helista kohe 112-le või mine lähima inimese juurde.';
- if(s.includes('ärev')||s.includes('anxious')||s.includes('panic')||s.includes('paanika')) return 'Ärevus võib olla väga intensiivne. 🌸 Proovime võtta ainult järgmise minuti. Kas tahad, et teeme ühe rahuliku hingamise koos?';
- if(s.includes('kurb')||s.includes('sad')||s.includes('depress')) return 'Mul on kahju, et sul on nii raske. Sa ei pea praegu kõike lahendama. Mis on kõige raskem osa just täna?';
- if(s.includes('üksik')||s.includes('lonely')) return 'Üksindus võib tõesti haiget teha. Kas sinu ümber on praegu keegi, kellele saaksid kasvõi ühe sõnumi saata?';
- if(s.includes('vihane')||s.includes('angry')) return 'Ma kuulen, et sinus on palju viha. Mis juhtus?';
- if(s.includes('ei taha rääkida')||s.includes("don't want to talk")) return 'See on okei. 🌸 Sa ei pea praegu midagi seletama. Võime lihtsalt olla või teha ühe väikese asja koos.';
- return 'Ma kuulan. 🌸 Sa ei pea seda täiuslikult sõnastama. Mis on üks väike asi, mida sa tahaksid, et ma praegu mõistaksin?';
-}
-function send(){
- const i=document.getElementById('text'); const t=i.value.trim(); if(!t)return;
- add('You',t); i.value='';
- setTimeout(()=>add('Bloom',reply(t)),250);
-}
-function completeQuest(){
- localStorage.setItem('bloomQuestDone','1');
- document.getElementById('questText').classList.add('done');
- document.getElementById('questText').textContent='Mission complete. You took one small step. 🌱';
- document.getElementById('questDone').textContent='Tubli. Väike samm on ikkagi samm. 🫶';
-}
-if(localStorage.getItem('bloomQuestDone')) completeQuest();
-</script>
-</body>
-</html>
+(function(){
+'use strict';
+var L={
+ en:{homeTitle:"You don't have to bloom all at once.",homeIntro:"Hi, I'm Bloom. I'm glad you're here.",feel:"How am I feeling?",feelSub:"Check in with yourself",chat:"Talk to Bloom",chatSub:"I'm here to listen",questSub:"One small step",aabits:"Mental Health A–Z",aabitsSub:"Simple explanations",human:"Talk to a real person",humanSub:"Sometimes a real person is the right next step.",crisis:"I need help now",crisisSub:"If you may be in immediate danger, get real-world help now.",back:"← Back",moodTitle:"How are you feeling?",moodSub:"You don't need the perfect word. Pick what feels closest.",send:"Send",placeholder:"Write here...",notice:"Bloom is an AI companion, not a doctor or therapist. If you are in immediate danger, get real-world help now.",questIntro:"The goal isn't to win. It's to take one small step in real life.",done:"✓ I did it",well:"🌸 Well done. A small step is still a step.",humanSoon:"Coming in the next MVP stage",humanText:"This area will become a secure way to send a question or request for human support. It will not be an emergency service.",humanButton:"I want human support",c1:"🚨 I am in immediate danger",c2:"🫶 I need someone with me",c3:"🧑 I want to talk to a real person",navHome:"Home",navFeel:"Feel",navBloom:"Bloom",navQuest:"Quest",moods:[['😔','Sad'],['😰','Anxious'],['🥺','Lonely'],['😩','Stressed'],['💔','Hurt'],['😶',"I don't know"],['😊','Okay']]},
+ et:{homeTitle:"Sa ei pea korraga õide puhkema.",homeIntro:"Hei, mina olen Bloom. Mul on hea meel, et sa siin oled.",feel:"Kuidas ma ennast tunnen?",feelSub:"Kuula korraks iseennast",chat:"Räägi Bloomiga",chatSub:"Ma olen siin, et kuulata",questSub:"Üks väike samm",aabits:"Vaimse tervise aabits",aabitsSub:"Lihtsad selgitused",human:"Räägi päris inimesega",humanSub:"Mõnikord on järgmine õige samm rääkida päris inimesega.",crisis:"Mul on praegu abi vaja",crisisSub:"Kui oled otseses ohus, otsi kohe päris abi.",back:"← Tagasi",moodTitle:"Kuidas sa ennast tunned?",moodSub:"Sa ei pea leidma ideaalset sõna. Vali see, mis tundub kõige lähedasem.",send:"Saada",placeholder:"Kirjuta siia...",notice:"Bloom on tehisintellektil põhinev kaaslane, mitte arst ega terapeut. Kui oled otseses ohus, otsi kohe päris abi.",questIntro:"Eesmärk ei ole võita. Eesmärk on teha päriselus üks väike samm.",done:"✓ Tegin ära",well:"🌸 Hästi tehtud. Väike samm on ikkagi samm.",humanSoon:"Tulemas järgmises MVP etapis",humanText:"Siia tuleb turvaline võimalus saata küsimus või palve saada inimeselt tuge. See ei ole hädaabiteenus.",humanButton:"Soovin inimese tuge",c1:"🚨 Olen otseses ohus",c2:"🫶 Mul on vaja, et keegi oleks minuga",c3:"🧑 Soovin rääkida päris inimesega",navHome:"Avaleht",navFeel:"Enesetunne",navBloom:"Bloom",navQuest:"Missioon",moods:[['😔','Kurb'],['😰','Ärevil'],['🥺','Üksik'],['😩','Stressis'],['💔','Haiget saanud'],['😶','Ma ei tea'],['😊','Enam-vähem hästi']]},
+ fi:{homeTitle:"Sinun ei tarvitse puhjeta kukkaan kerralla.",homeIntro:"Hei, olen Bloom. Mukava, että olet täällä.",feel:"Miltä minusta tuntuu?",feelSub:"Pysähdy hetkeksi kuuntelemaan itseäsi",chat:"Puhu Bloomille",chatSub:"Olen täällä kuuntelemassa",questSub:"Yksi pieni askel",aabits:"Mielenterveys A–Z",aabitsSub:"Yksinkertaisia selityksiä",human:"Puhu oikealle ihmiselle",humanSub:"Joskus oikea ihminen on seuraava askel.",crisis:"Tarvitsen apua nyt",crisisSub:"Jos olet välittömässä vaarassa, hae oikeaa apua nyt.",back:"← Takaisin",moodTitle:"Miltä sinusta tuntuu?",moodSub:"Sinun ei tarvitse löytää täydellistä sanaa.",send:"Lähetä",placeholder:"Kirjoita tähän...",notice:"Bloom on tekoälyyn perustuva kumppani, ei lääkäri tai terapeutti.",questIntro:"Tavoite ei ole voittaa. Tavoite on ottaa yksi pieni askel oikeassa elämässä.",done:"✓ Tein sen",well:"🌸 Hienoa. Pieni askel on silti askel.",humanSoon:"Tulossa seuraavassa MVP-vaiheessa",humanText:"Tähän tulee turvallinen tapa pyytää tukea oikealta ihmiseltä.",humanButton:"Haluan ihmisen tukea",c1:"🚨 Olen välittömässä vaarassa",c2:"🫶 Tarvitsen jonkun kanssani",c3:"🧑 Haluan puhua oikealle ihmiselle",navHome:"Koti",navFeel:"Tunne",navBloom:"Bloom",navQuest:"Tehtävä",moods:[['😔','Surullinen'],['😰','Ahdistunut'],['🥺','Yksinäinen'],['😩','Stressaantunut'],['💔','Loukkaantunut'],['😶','En tiedä'],['😊','Ihan ok']]},
+ de:{homeTitle:"Du musst nicht alles auf einmal schaffen.",homeIntro:"Hallo, ich bin Bloom. Schön, dass du hier bist.",feel:"Wie fühle ich mich?",feelSub:"Hör kurz in dich hinein",chat:"Mit Bloom sprechen",chatSub:"Ich bin hier und höre zu",questSub:"Ein kleiner Schritt",aabits:"Psychische Gesundheit A–Z",aabitsSub:"Einfache Erklärungen",human:"Mit einem echten Menschen sprechen",humanSub:"Manchmal ist ein echter Mensch der nächste Schritt.",crisis:"Ich brauche jetzt Hilfe",crisisSub:"Wenn du unmittelbar in Gefahr bist, hole dir jetzt echte Hilfe.",back:"← Zurück",moodTitle:"Wie fühlst du dich?",moodSub:"Du brauchst nicht das perfekte Wort.",send:"Senden",placeholder:"Hier schreiben...",notice:"Bloom ist ein KI-Begleiter, kein Arzt und kein Therapeut.",questIntro:"Es geht nicht ums Gewinnen. Es geht um einen kleinen Schritt im echten Leben.",done:"✓ Geschafft",well:"🌸 Gut gemacht. Ein kleiner Schritt ist trotzdem ein Schritt.",humanSoon:"Kommt in der nächsten MVP-Phase",humanText:"Hier entsteht eine sichere Möglichkeit, Unterstützung von einem echten Menschen anzufragen.",humanButton:"Ich möchte menschliche Unterstützung",c1:"🚨 Ich bin in unmittelbarer Gefahr",c2:"🫶 Ich brauche jemanden bei mir",c3:"🧑 Ich möchte mit einem echten Menschen sprechen",navHome:"Start",navFeel:"Gefühl",navBloom:"Bloom",navQuest:"Schritt",moods:[['😔','Traurig'],['😰','Ängstlich'],['🥺','Einsam'],['😩','Gestresst'],['💔','Verletzt'],['😶','Ich weiß es nicht'],['😊','Okay']]},
+ fr:{homeTitle:"Tu n’as pas besoin d’éclore d’un seul coup.",homeIntro:"Bonjour, je suis Bloom. Je suis heureux que tu sois ici.",feel:"Comment je me sens ?",feelSub:"Écoute-toi un instant",chat:"Parler à Bloom",chatSub:"Je suis là pour écouter",questSub:"Un petit pas",aabits:"Santé mentale A–Z",aabitsSub:"Explications simples",human:"Parler à une vraie personne",humanSub:"Parfois, une vraie personne est la bonne prochaine étape.",crisis:"J’ai besoin d’aide maintenant",crisisSub:"Si tu es en danger immédiat, cherche de l’aide réelle maintenant.",back:"← Retour",moodTitle:"Comment te sens-tu ?",moodSub:"Tu n’as pas besoin du mot parfait.",send:"Envoyer",placeholder:"Écris ici...",notice:"Bloom est un compagnon IA, pas un médecin ni un thérapeute.",questIntro:"Le but n’est pas de gagner. C’est de faire un petit pas dans la vraie vie.",done:"✓ C’est fait",well:"🌸 Bravo. Un petit pas reste un pas.",humanSoon:"À venir dans la prochaine étape du MVP",humanText:"Cet espace permettra de demander un soutien humain de manière sécurisée.",humanButton:"Je veux un soutien humain",c1:"🚨 Je suis en danger immédiat",c2:"🫶 J’ai besoin que quelqu’un reste avec moi",c3:"🧑 Je veux parler à une vraie personne",navHome:"Accueil",navFeel:"État",navBloom:"Bloom",navQuest:"Étape",moods:[['😔','Triste'],['😰','Anxieux'],['🥺','Seul'],['😩','Stressé'],['💔','Blessé'],['😶','Je ne sais pas'],['😊','Ça va']]},
+ es:{homeTitle:"No tienes que florecer de golpe.",homeIntro:"Hola, soy Bloom. Me alegra que estés aquí.",feel:"¿Cómo me siento?",feelSub:"Escúchate un momento",chat:"Hablar con Bloom",chatSub:"Estoy aquí para escucharte",questSub:"Un pequeño paso",aabits:"Salud mental A–Z",aabitsSub:"Explicaciones sencillas",human:"Hablar con una persona real",humanSub:"A veces una persona real es el siguiente paso.",crisis:"Necesito ayuda ahora",crisisSub:"Si estás en peligro inmediato, busca ayuda real ahora.",back:"← Volver",moodTitle:"¿Cómo te sientes?",moodSub:"No necesitas encontrar la palabra perfecta.",send:"Enviar",placeholder:"Escribe aquí...",notice:"Bloom es un compañero de IA, no un médico ni terapeuta.",questIntro:"El objetivo no es ganar. Es dar un pequeño paso en la vida real.",done:"✓ Lo hice",well:"🌸 Bien hecho. Un pequeño paso sigue siendo un paso.",humanSoon:"Próximamente en la siguiente etapa del MVP",humanText:"Aquí habrá una forma segura de pedir apoyo de una persona real.",humanButton:"Quiero apoyo humano",c1:"🚨 Estoy en peligro inmediato",c2:"🫶 Necesito que alguien esté conmigo",c3:"🧑 Quiero hablar con una persona real",navHome:"Inicio",navFeel:"Ánimo",navBloom:"Bloom",navQuest:"Paso",moods:[['😔','Triste'],['😰','Ansioso'],['🥺','Solo'],['😩','Estresado'],['💔','Herido'],['😶','No lo sé'],['😊','Bien']]}
+};
+var lang=localStorage.getItem('bloomLang')||'en'; if(!L[lang])lang='en';
+var mission=Number(localStorage.getItem('bloomMission')||0); var missions=[
+['Today’s tiny mission','Open the curtains or go to a window for a moment. Look outside and take a slow breath.','Tänane väike missioon','Ava kardinad või mine korraks akna juurde. Vaata välja ja hinga rahulikult.'],
+['One small step','Drink a glass of water and give yourself one quiet minute.','Üks väike samm','Joo klaas vett ja anna endale üks vaikne minut.'],
+['A little fresh air','Step outside for five minutes, or stand by an open window.','Natuke värsket õhku','Mine viieks minutiks õue või seisa avatud akna juures.'],
+['One human connection','Send a simple message to someone you trust.','Üks inimlik kontakt','Saada kellelegi, keda usaldad, lihtne sõnum.'],
+['Something kind','Do one small thing today that feels comforting or pleasant.','Midagi head iseendale','Tee täna üks väike asi, mis tundub sulle hea või lohutav.']];
+function el(id){return document.getElementById(id)}
+function txt(id,value){if(el(id))el(id).textContent=value}
+window.showScreen=function(id){var ss=document.querySelectorAll('.screen');for(var i=0;i<ss.length;i++)ss[i].classList.remove('active');if(el(id))el(id).classList.add('active');window.scrollTo(0,0);if(id==='chat'&&!el('chatbox').children.length)initChat()};
+window.changeLanguage=function(x){if(!L[x])x='en';lang=x;localStorage.setItem('bloomLang',x);document.documentElement.lang=x;el('language').value=x;render();if(!el('chatbox').children.length)initChat()};
+function render(){var t=L[lang];txt('homeTitle',t.homeTitle);txt('homeIntro',t.homeIntro);txt('bFeel',t.feel);txt('sFeel',t.feelSub);txt('bChat',t.chat);txt('sChat',t.chatSub);txt('sQuest',t.questSub);txt('bAabits',t.aabits||t.aabits);txt('sAabits',t.aabitsSub);txt('bHuman',t.human);txt('sHuman',t.humanSub);txt('bCrisis',t.crisis);txt('sCrisis',t.crisisSub);['backMood','backChat','backQuest','backAabits','backHuman','backCrisis'].forEach(function(id){txt(id,t.back)});txt('moodTitle',t.moodTitle);txt('moodSub',t.moodSub);txt('chatTitle',t.chat);txt('sendBtn',t.send);el('input').placeholder=t.placeholder;txt('chatNotice',t.notice);txt('questSub',t.questIntro);txt('qbutton',t.done);txt('humanTitle',t.human);txt('humanSub',t.humanSub);txt('humanSoonTitle',t.humanSoon);txt('humanSoonText',t.humanText);txt('humanButton',t.humanButton);txt('crisisTitle','🆘 '+t.crisis);txt('crisisSub',t.crisisSub);txt('crisis1',t.c1);txt('crisis2',t.c2);txt('crisis3',t.c3);txt('navHome',t.navHome);txt('navFeel',t.navFeel);txt('navBloom',t.navBloom);txt('navQuest',t.navQuest);renderMoods();renderMission();renderArticles()}
+function renderMoods(){var box=el('moodChoices');box.innerHTML='';var arr=L[lang].moods;for(var i=0;i<arr.length;i++){var b=document.createElement('button');b.className='choice';b.type='button';b.textContent=arr[i][0]+' '+arr[i][1];b.onclick=(function(i){return function(){selectMood(i)}})(i);box.appendChild(b)}}
+function selectMood(i){var arr=L[lang].moods;showScreen('chat');addMsg('user',arr[i][0]+' '+arr[i][1]);var responses={Sad:['I’m sorry things feel hard right now. 🌸 What feels hardest today?','Mul on kahju, et sul praegu raske on. 🌸 Mis on täna kõige raskem?'],Anxious:['Anxiety can make thoughts and the body feel very loud. What feels most overwhelming right now?','Ärevus võib panna mõtted ja keha väga valjult tööle. Mis tundub praegu kõige rohkem üle jõu käivat?'],Lonely:['Loneliness can hurt even when people are around you. Is there someone you could message today?','Üksindus võib olla väga valus isegi siis, kui inimesed on su ümber. Kas on keegi, kellele saaksid täna sõnumi saata?'],Stressed:['It sounds like you have a lot to carry. Let’s take one thing at a time.','Tundub, et sul on palju kanda. Võtame ühe asja korraga.'],Hurt:['I hear that something has hurt you. 🫶 If you want, tell me what happened.','Ma kuulen, et miski on sulle haiget teinud. 🫶 Kui tahad, räägi, mis juhtus.'],Unknown:['That is completely okay. We can start very small.','See on täiesti okei. Võime alustada väga väikesest asjast.'],Okay:['I’m glad to hear that. 🌸 Do you want to try one small mission or just talk?','Mul on hea meel seda kuulda. 🌸 Kas tahad proovida üht väikest missiooni või lihtsalt rääkida?']};var key=['Sad','Anxious','Lonely','Stressed','Hurt','Unknown','Okay'][i];setTimeout(function(){addMsg('bloom',lang==='et'?responses[key][1]:responses[key][0])},180)}
+function addMsg(who,text){var d=document.createElement('div');d.className='msg '+(who==='user'?'umsg':'bmsg');d.textContent=text;el('chatbox').appendChild(d);d.scrollIntoView({behavior:'smooth',block:'end'})}
+function initChat(){el('chatbox').innerHTML='';addMsg('bloom',lang==='et'?"Hei. Mina olen Bloom. 🌸\n\nSa ei pea mulle kõike korraga rääkima. Võid alustada täiesti väikesest asjast.\n\nKuidas sul praegu päriselt läheb?":"Hi. I’m Bloom. 🌸\n\nYou don’t have to tell me everything at once. You can start with something very small.\n\nHow are you really feeling right now?")}
+window.sendMessage=function(){var input=el('input'),t=input.value.trim();if(!t)return;input.value='';addMsg('user',t);var low=t.toLowerCase();setTimeout(function(){var crisis=/hurt myself|kill myself|suicide|don't want to live|want to die|self-harm|endale haiget|enesetap|ei taha elada|tahan surra/.test(low);var r;if(crisis)r=lang==='et'?"Aitäh, et mulle sellest rääkisid. ❤️ Ma võtan sind tõsiselt. Kas oled praegu otseses ohus või oled endale juba viga teinud?":"Thank you for telling me. ❤️ I take you seriously. Are you in immediate danger right now, or have you already hurt yourself?";else if(/lonely|alone|üksik|üksind/.test(low))r=lang==='et'?"Üksindus võib olla väga valus. Kas on keegi, kellele saaksid praegu lihtsa sõnumi saata?":"Loneliness can be very painful. Is there someone you could send a simple message to right now?";else if(/anxious|anxiety|panic|ärev|paanika/.test(low))r=lang==='et'?"Proovime üht väikest asja. Vaata ringi ja nimeta kolm asja, mida näed. Siis hinga aeglaselt välja. 🌱":"Let’s try one small thing. Look around and name three things you can see. Then slowly breathe out. 🌱";else if(/sad|cry|upset|kurb|nutan|õnnetu/.test(low))r=lang==='et'?"Mul on kahju, et sul praegu valus on. 🫶 Kas tahad rääkida, mis juhtus?":"I’m sorry you’re hurting right now. 🫶 Do you want to tell me what happened?";else r=lang==='et'?"Ma kuulan. 🌸 Sa ei pea kõike korraga lahendama. Mis on praegu kõige raskem?":"I’m listening. 🌸 You don’t have to solve everything at once. What feels hardest right now?";addMsg('bloom',r)},220)};
+function renderMission(){var m=missions[mission%missions.length];if(lang==='et'){txt('qtitle',m[2]);txt('qtext',m[3])}else{txt('qtitle',m[0]);txt('qtext',m[1])}txt('qdone','')}
+window.completeQuest=function(){txt('qdone',L[lang].well);setTimeout(function(){mission=(mission+1)%missions.length;localStorage.setItem('bloomMission',mission);renderMission()},900)};
+function renderArticles(){var data=lang==='et'?[['Ärevus','Ärevus võib panna mõtted kiiresti jooksma ja keha pidevalt valvel olema. Väikesed maandavad harjutused, puhkus ja kellegagi rääkimine võivad aidata.'],['Depressioon','Depressioon võib mõjutada meeleolu, energiat, und, keskendumist ja lootust. See on rohkem kui lihtsalt halb päev.'],['Üksildus','Üksildane võib olla ka siis, kui inimesed on su ümber. Üks väike kontakt võib olla algus.'],['Läbipõlemine ja stress','Pikaajaline pinge võib jätta inimese vaimselt ja füüsiliselt kurnatuks. Puhkus, piirid, tugi ja praktilised muutused on olulised.']]:[['Anxiety','Anxiety can make thoughts race and the body feel on alert. Small grounding steps, rest and talking to someone can help.'],['Depression','Depression can affect mood, energy, sleep, concentration and hope. It is more than simply having a bad day.'],['Loneliness','You can feel lonely even when other people are around. One small connection can be a beginning.'],['Burnout & stress','Long-lasting pressure can leave you mentally and physically exhausted. Rest, boundaries, support and practical changes matter.']];var box=el('articles');box.innerHTML='';for(var i=0;i<data.length;i++){var d=document.createElement('div');d.className='article';var b=document.createElement('b');b.textContent=data[i][0];var s=document.createElement('span');s.textContent=data[i][1];d.appendChild(b);d.appendChild(s);box.appendChild(d)}}
+window.humanAlert=function(){alert(L[lang].humanSoon)};window.crisisAlert=function(n){alert(n===1?(lang==='et'?'Kui oled otseses ohus, helista kohalikule hädaabinumbrile või mine lähimasse erakorralise meditsiini osakonda.':'If you are in immediate danger, call your local emergency number or go to the nearest emergency department.'):(lang==='et'?'Palun mine usaldusväärse inimese juurde ja ütle talle, et vajad abi. Kui tunned end ebaturvaliselt, ära jää üksi.':'Please go to a trusted person and tell them you need help. Do not stay alone if you feel unsafe.'))};
+render();el('language').value=lang;el('input').addEventListener('keydown',function(e){if(e.key==='Enter')window.sendMessage()});
+})();
+</script></body></html>
