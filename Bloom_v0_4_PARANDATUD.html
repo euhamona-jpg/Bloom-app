@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bloom 🌸</title>
+<style>
+:root{--bg:#f7f5ef;--card:#fffdf9;--green:#243a32;--muted:#737b77;--soft:#dcece5;--pink:#fff0f3}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--green);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button{font:inherit;border:0;cursor:pointer}
+.app{max-width:900px;margin:auto;padding:28px 22px 120px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.logo{font-size:34px;font-weight:800}.logo span{font-size:35px}
+.version{color:var(--muted);font-size:18px}
+.screen{display:none}.screen.active{display:block}
+.back{background:none;color:var(--muted);font-size:22px;padding:8px 0;margin:8px 0 32px}
+h1{font-size:46px;line-height:1.08;margin:0 0 14px}
+h2{font-size:27px;margin:0 0 10px}
+.lead{font-size:22px;line-height:1.5;color:var(--muted);margin:0 0 28px}
+.hero-flower{font-size:70px;margin:22px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--card);border-radius:30px;padding:28px;box-shadow:0 1px 8px #00000008;margin-bottom:18px}
+.tile{min-height:190px;text-align:left;transition:.15s}.tile:active{transform:scale(.98)}
+.tile .icon{font-size:48px;margin-bottom:18px}.tile h2{color:#367bd3}.tile p,.card p{color:var(--muted);font-size:20px;line-height:1.5;margin:0}
+.primary{background:var(--green);color:white;border-radius:22px;padding:18px 26px;font-weight:700;font-size:20px}
+.mission{background:var(--soft);border-radius:30px;padding:30px;margin-top:22px}
+.mission.done{background:#e7f1ed}
+.status{font-size:22px;color:var(--muted);line-height:1.5;margin:14px 0 22px}
+.choices{display:flex;flex-wrap:wrap;gap:10px}.choice{background:var(--card);padding:14px 18px;border-radius:18px;color:var(--green);font-weight:600}
+.chat{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.msg{padding:20px 22px;border-radius:24px;font-size:19px;line-height:1.45;max-width:85%}.bloom{background:var(--soft);align-self:flex-start}.user{background:white;align-self:flex-end}
+.inputrow{display:flex;gap:10px}.inputrow input{flex:1;border:1px solid #d6dbd8;border-radius:20px;padding:17px;font-size:17px;background:white}
+.a2z .card{cursor:pointer}.a2z .card:active{transform:scale(.99)}
+.bottom{position:fixed;left:0;right:0;bottom:0;background:#fffdf9f2;border-top:1px solid #ddd;padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);z-index:5}
+.nav{background:none;color:var(--muted);font-size:15px;padding:5px}.nav div{font-size:32px;margin-bottom:2px}
+.notice{font-size:14px;color:var(--muted);text-align:center;margin-top:20px}
+@media(max-width:650px){.app{padding:25px 18px 115px}h1{font-size:40px}.grid{grid-template-columns:1fr}.tile{min-height:auto}.lead{font-size:20px}.card p,.status{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="logo">🌸 Bloom</div><div class="version">v0.4 · test</div></header>
+
+<section id="home" class="screen active">
+<div class="hero-flower">🌸</div>
+<h1>You don't have to<br>bloom all at once.</h1>
+<p class="lead">Hi, I'm Bloom. I'm glad you're here.</p>
+<div class="grid">
+<button class="card tile" onclick="show('mood')"><div class="icon">💛</div><h2>How am I feeling?</h2><p>Check in with yourself</p></button>
+<button class="card tile" onclick="show('chat')"><div class="icon">💬</div><h2>Talk to Bloom</h2><p>I'm here to listen</p></button>
+<button class="card tile" onclick="show('quest')"><div class="icon">🎮</div><h2>Bloom Quest</h2><p>One small step</p></button>
+<button class="card tile" onclick="show('a2z')"><div class="icon">📖</div><h2>Mental Health A–Z</h2><p>Simple explanations</p></button>
+<button class="card tile" onclick="show('parent')"><div class="icon">👨‍👩‍👧</div><h2>My child needs help</h2><p>Support for parents</p></button>
+<button class="card tile" onclick="show('crisis')"><div class="icon">🆘</div><h2>I need help now</h2><p>Immediate support</p></button>
+</div>
+</section>
+
+<section id="mood" class="screen">
+<button class="back" onclick="show('home')">← Back</button>
+<h1>How are you feeling? 💛</h1><p class="lead">There is no right answer.</p>
+<div class="choices">
+<button class="choice" onclick="mood('Sad','😔')">😔 Sad</button>
+<button class="choice" onclick="mood('Anxious','😰')">😰 Anxious</button>
+<button class="choice" onclick="mood('Lonely','🥺')">🥺 Lonely</button>
+<button class="choice" onclick="mood('Angry','😡')">😡 Angry</button>
+<button class="choice" onclick="mood('Stressed','😩')">😩 Stressed</button>
+<button class="choice" onclick="mood('I don’t know','😶')">😶 I don't know</button>
+</div>
+</section>
+
+<section id="chat" class="screen">
+<button class="back" onclick="show('home')">← Back</button>
+<h1>Talk to Bloom 🌸</h1><p class="lead">I'm listening. You can write in Estonian or English.</p>
+<div id="chatbox" class="chat"><div class="msg bloom">Hei. Mina olen Bloom. 🌸 Ma kuulan. Sa ei pea mulle kõike korraga rääkima. Kuidas sul praegu päriselt läheb?</div></div>
+<div class="inputrow"><input id="text" placeholder="Write what is on your mind..." onkeydown="if(event.key==='Enter')send()"><button class="primary" onclick="send()">Send</button></div>
+<div class="notice">This is a prototype with simple demo responses. It is not connected to a real AI yet.</div>
+</section>
+
+<section id="quest" class="screen">
+<button class="back" onclick="show('home')">← Back</button>
+<h1>Bloom Quest 🌱</h1><p class="lead">You don't have to fix everything. Just one small step.</p>
+<div id="mission" class="mission">
+<h2>Today's small mission</h2>
+<div id="missionText" class="status">Ava aken või kardinad ja lase natuke värsket õhku või päevavalgust sisse. 🌱</div>
+<button id="questBtn" class="primary" onclick="completeQuest()">I did it 🌱</button>
+</div>
+<p id="questMessage" class="status">Tubli. Väike samm on ikkagi samm. 🫶</p>
+</section>
+
+<section id="a2z" class="screen a2z">
+<button class="back" onclick="show('home')">← Back</button>
+<h1>Mental Health A–Z 📖</h1><p class="lead">Short, simple explanations. Learning about mental health can make the next step easier.</p>
+<div id="topics"></div>
+</section>
+
+<section id="topic" class="screen">
+<button class="back" onclick="show('a2z')">← Back</button>
+<h1 id="topicTitle"></h1><p id="topicText" class="lead"></p>
+<div class="card"><h2>One small step 🌱</h2><p id="topicStep"></p></div>
+<button class="primary" onclick="show('chat')">Talk to Bloom 💬</button>
+</section>
+
+<section id="parent" class="screen">
+<button class="back" onclick="show('home')">← Back</button>
+<h1>My child needs help 👨‍👩‍👧</h1><p class="lead">You don't have to know exactly what to do. Start with the next small step.</p>
+<div class="card"><h2>My child doesn't want to go to school</h2><p>Listen first. Ask what feels hardest, without immediately blaming or forcing an explanation.</p></div>
+<div class="card"><h2>I'm worried about bullying</h2><p>Take the concern seriously. Keep notes of what is happening and involve the school and appropriate professionals when needed.</p></div>
+<div class="card"><h2>My child says they don't want to live</h2><p>Take this seriously. Stay with the child, seek immediate professional help, and use emergency services if there is immediate danger.</p></div>
+</section>
+
+<section id="crisis" class="screen">
+<button class="back" onclick="show('home')">← Back</button>
+<h1>I'm glad you told me. ❤️</h1><p class="lead">If you are thinking about hurting yourself or may be in immediate danger, please don't stay alone.</p>
+<div class="card"><h2>Right now</h2><p>Go to a trusted person and tell them clearly that you need help. Move away from anything you could use to hurt yourself. If you have already hurt yourself, taken an overdose, or believe you may act now, contact your local emergency service immediately.</p></div>
+<div class="card" style="background:var(--pink)"><h2>Estonia</h2><p>Emergency number: <b>112</b></p><p>If you are elsewhere, use your local emergency number or a local crisis service.</p></div>
+</section>
+</div>
+
+<nav class="bottom">
+<button class="nav" onclick="show('home')"><div>🏠</div>Home</button>
+<button class="nav" onclick="show('mood')"><div>💛</div>Feel</button>
+<button class="nav" onclick="show('chat')"><div>💬</div>Bloom</button>
+<button class="nav" onclick="show('quest')"><div>🌱</div>Quest</button>
+</nav>
+
+<script>
+const missions=[
+"Ava aken või kardinad ja lase natuke värsket õhku või päevavalgust sisse. 🌱",
+"Joo üks klaas vett. 💧",
+"Mine 5 minutiks õue või vaata korraks aknast välja. 🌿",
+"Kirjuta ühele inimesele: „Hei, kuidas sul läheb?” 💛",
+"Pane mängima üks laul, mis sulle meeldib. 🎧",
+"Tee täna enda vastu üks väike lahke tegu. 🫶"
+];
+let missionIndex=Number(localStorage.getItem('bloomMissionIndex')||0);
+let done=localStorage.getItem('bloomQuestDone')==='1';
+
+function show(id){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ const el=document.getElementById(id); if(el) el.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(id==='quest') renderQuest();
+}
+function renderQuest(){
+ document.getElementById('missionText').textContent=done?"Mission complete. You took one small step. 🌱":missions[missionIndex%missions.length];
+ document.getElementById('questBtn').textContent=done?"Done ✓":"I did it 🌱";
+ document.getElementById('questBtn').disabled=done;
+ document.getElementById('questMessage').textContent=done?"Sa tegid selle ära. Väike samm on ikkagi samm. 🫶":"Sa ei pea kõike korraga lahendama.";
+ document.getElementById('mission').classList.toggle('done',done);
+}
+function completeQuest(){
+ if(done)return;
+ done=true;
+ localStorage.setItem('bloomQuestDone','1');
+ localStorage.setItem('bloomMissionIndex',String((missionIndex+1)%missions.length));
+ renderQuest();
+ setTimeout(()=>alert("🌱 Tubli! Sa tegid ühe väikese sammu."),50);
+}
+function mood(name,emoji){
+ show('chat');
+ add('user',emoji+" "+name);
+ let r={
+ "Sad":"Mul on kahju, et sul praegu raske on. 🌸 Mis on kõige raskem osa just täna?",
+ "Anxious":"Ärevus võib panna keha ja mõtted väga valjult tööle. Võime võtta ühe väikese sammu korraga.",
+ "Lonely":"Üksindus võib olla väga valus isegi siis, kui inimesed on su ümber. Ma kuulan.",
+ "Angry":"Ma kuulen, et sinus on praegu palju viha. Tahad rääkida, mis selle vallandas?",
+ "Stressed":"Tundub, et sul on praegu palju kanda. Sa ei pea kõike korraga lahendama.",
+ "I don’t know":"See on täiesti okei. Mõnikord on raske isegi aru saada, mida täpselt tunned."
+ }[name]||"Ma kuulan. 🌸";
+ add('bloom',r);
+}
+function add(who,text){
+ const d=document.createElement('div');d.className='msg '+who;d.textContent=text;
+ document.getElementById('chatbox').appendChild(d);d.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function send(){
+ const i=document.getElementById('text'),t=i.value.trim();if(!t)return;
+ add('user',t);i.value='';
+ const s=t.toLowerCase();let r;
+ if(/suic|kill myself|hurt myself|end my life|ei taha elada|enesetapp|endale haiget/.test(s))
+   r="Aitäh, et sa sellest rääkisid. ❤️ Kui oled praegu ohus või oled endale juba midagi teinud, ära jää üksi ja võta kohe ühendust kohaliku hädaabiteenistusega. Eestis on hädaabinumber 112.";
+ else if(/ärev|anx|panic|pa[p]anic/.test(s)) r="Ma kuulen sind. Ärevus võib olla väga tugev. 🌸 Teeme ühe väikese asja: hinga aeglaselt sisse ja välja ning keskendu sellele, mida näed enda ümber.";
+ else if(/kurb|sad|depress/.test(s)) r="Mul on kahju, et sul nii raske on. Sa ei pea praegu kõike lahendama. Mis on kõige raskem osa just täna?";
+ else if(/üksik|lonely/.test(s)) r="Üksindus võib väga haiget teha. 🫶 Kas sinu ümber on keegi, kellele võiksime mõelda kui ühele väikesele kontaktile?";
+ else r="Ma kuulan. 🌸 Sa ei pea seda täiuslikult sõnastama. Räägi mulle natuke rohkem, kui tahad.";
+ setTimeout(()=>add('bloom',r),250);
+}
+const data=[
+["Anxiety","Ärevus võib panna keha ja mõtted pidevalt valvel olema. See võib tähendada muret, pinget, kiireid mõtteid või kehalisi sümptomeid.","Proovi märgata üht asja enda ümber ja teha üks aeglane väljahingamine."],
+["Depression","Depressioon on rohkem kui lihtsalt kurbus. See võib mõjutada meeleolu, energiat, und, motivatsiooni ja huvi asjade vastu, mis varem korda läksid.","Vali üks väga väike tegevus, näiteks duši all käimine või klaasi vee joomine."],
+["Loneliness","Üksildane võib olla ka siis, kui inimesed on ümber. Üks väike turvaline kontakt võib mõnikord aidata.","Saada ühele inimesele lihtne sõnum: „Hei. Mõtlesin sinu peale.”"],
+["Burnout","Pikaajaline stress võib jätta inimese emotsionaalselt ja füüsiliselt kurnatuks. Puhkus, tugi ja koormuse vähendamine võivad olla olulised.","Küsi endalt: mida saan täna ühe väikese asja võrra vähem teha?"]
+];
+document.getElementById('topics').innerHTML=data.map((x,i)=>`<button class="card" style="width:100%;text-align:left" onclick="openTopic(${i})"><h2>${x[0]}</h2><p>${x[1]}</p></button>`).join('');
+function openTopic(i){document.getElementById('topicTitle').textContent=data[i][0];document.getElementById('topicText').textContent=data[i][1];document.getElementById('topicStep').textContent=data[i][2];show('topic')}
+renderQuest();
+</script>
+</body>
+</html>
