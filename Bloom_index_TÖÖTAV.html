@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f4ee">
+<title>Bloom 🌸</title>
+<style>
+:root{
+  --bg:#f7f4ee;--card:#fffdf9;--ink:#25352e;--muted:#68756e;
+  --green:#9fbea8;--lav:#d8cce6;--pink:#efc8d2;--cream:#fff8ed;
+  --danger:#ead4d4;--shadow:0 8px 28px rgba(45,55,50,.09)
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button{font:inherit;color:inherit;border:0;cursor:pointer}
+.app{max-width:520px;margin:auto;min-height:100vh;padding-bottom:88px}
+header{padding:20px 20px 8px;font-weight:700;font-size:22px}
+.logo{display:flex;align-items:center;gap:8px}
+main{padding:10px 16px}
+.screen{display:none}
+.screen.active{display:block}
+.hero{text-align:center;padding:22px 10px}
+.flower{font-size:64px;line-height:1;margin-bottom:10px}
+h1{font-size:29px;margin:5px 0 8px}
+h2{font-size:25px;margin:8px 0}
+.sub{color:var(--muted);line-height:1.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.card,.choice,.primary{background:var(--card);padding:17px;border-radius:20px;box-shadow:var(--shadow);text-align:left}
+.card strong{display:block;font-size:16px;margin-bottom:5px}
+.card span{color:var(--muted);font-size:13px}
+.wide{grid-column:1/-1}
+.danger{background:var(--danger)}
+.back{background:transparent;padding:8px 0;font-weight:700;margin-bottom:8px}
+.choices{display:grid;gap:10px;margin-top:18px}
+.choice{text-align:left;width:100%}
+.choice:hover,.card:hover,.primary:hover{transform:translateY(-1px)}
+.chat{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.msg{padding:13px 15px;border-radius:18px;max-width:88%;line-height:1.45;white-space:pre-wrap}
+.bot{background:var(--card);align-self:flex-start;box-shadow:var(--shadow)}
+.me{background:var(--green);align-self:flex-end}
+.chatbox{display:flex;gap:8px;margin-top:12px}
+input{flex:1;border:1px solid #d8ddd9;border-radius:18px;padding:13px;background:#fff}
+.primary{background:var(--green);padding:13px 17px;text-align:center;font-weight:700}
+.panel{background:var(--card);border-radius:22px;padding:18px;box-shadow:var(--shadow);margin-top:14px;line-height:1.55}
+.article{background:var(--card);padding:15px;border-radius:18px;margin:10px 0;box-shadow:var(--shadow)}
+.article b{display:block;margin-bottom:5px}
+.quest{background:var(--cream);border-radius:22px;padding:22px;text-align:center;box-shadow:var(--shadow);margin-top:16px}
+.check{font-size:50px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,253,249,.96);border-top:1px solid #e4e5e1;padding:8px max(10px,calc((100vw - 520px)/2));display:flex;justify-content:space-around;z-index:10}
+.nav button{background:transparent;padding:5px 12px;font-size:12px}
+.nav span{display:block;font-size:22px}
+.small{font-size:12px;color:var(--muted);margin-top:12px}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="logo">🌸 Bloom</div></header>
+<main>
+
+<section id="home" class="screen active">
+  <div class="hero">
+    <div class="flower">🌸</div>
+    <h1>You don’t have to bloom all at once.</h1>
+    <p class="sub">Sa ei pea kõike korraga lahendama.<br>Alustame ühest väikesest sammust.</p>
+  </div>
+  <div class="grid">
+    <button class="card" onclick="show('chat')"><strong>💬 Talk to Bloom</strong><span>Räägi Bloomiga</span></button>
+    <button class="card" onclick="show('mood')"><strong>💛 How am I feeling?</strong><span>Mis tunne mul on?</span></button>
+    <button class="card" onclick="show('quest')"><strong>🌱 Bloom Quest</strong><span>Üks väike samm</span></button>
+    <button class="card" onclick="show('aabits')"><strong>📖 Vaimse tervise aabits</strong><span>Õpi ja mõista</span></button>
+    <button class="card wide" onclick="show('human')"><strong>👤 Talk to a real person</strong><span>Mõnikord on kõige parem rääkida päris inimesega.</span></button>
+    <button class="card wide danger" onclick="show('crisis')"><strong>🆘 I need help now</strong><span>Kui sul on praegu väga halb</span></button>
+  </div>
+</section>
+
+<section id="mood" class="screen">
+  <button class="back" onclick="show('home')">← Tagasi</button>
+  <h2>Kuidas sul praegu päriselt läheb?</h2>
+  <p class="sub">Vali see, mis tundub kõige lähemal.</p>
+  <div class="choices">
+    <button class="choice" onclick="mood('Kurb','😔')">😔 Kurb</button>
+    <button class="choice" onclick="mood('Ärev','😰')">😰 Ärev</button>
+    <button class="choice" onclick="mood('Üksik','🥺')">🥺 Üksik</button>
+    <button class="choice" onclick="mood('Vihane','😡')">😡 Vihane</button>
+    <button class="choice" onclick="mood('Stressis','😩')">😩 Stressis</button>
+    <button class="choice" onclick="mood('Väsinud','😴')">😴 Väsinud</button>
+    <button class="choice" onclick="mood('Ma ei tea','😶')">😶 Ma ei tea, mida tunnen</button>
+    <button class="choice" onclick="mood('Hästi','😊')">😊 Olen okei</button>
+  </div>
+</section>
+
+<section id="chat" class="screen">
+  <button class="back" onclick="show('home')">← Tagasi</button>
+  <h2>Talk to Bloom 🌸</h2>
+  <p class="sub">Kõigepealt kuula. Siis mõista. Siis üks väike samm.</p>
+  <div id="chatMessages" class="chat">
+    <div class="msg bot">Hei. Mina olen Bloom. 🌸<br><br>Sa ei pea mulle kõike korraga rääkima. Võid alustada täiesti väikesest asjast.<br><br>Kuidas sul praegu päriselt läheb?</div>
+  </div>
+  <div class="chatbox">
+    <input id="chatInput" placeholder="Kirjuta Bloomile..." onkeydown="if(event.key==='Enter')send()">
+    <button class="primary" onclick="send()">Saada</button>
+  </div>
+  <div class="small">Bloom on AI-prototüüp, mitte arst ega terapeut. Kriisis otsi päris inimese abi.</div>
+</section>
+
+<section id="quest" class="screen">
+  <button class="back" onclick="show('home')">← Tagasi</button>
+  <h2>Bloom Quest 🌱</h2>
+  <p class="sub">Üks väike samm on ikkagi samm.</p>
+  <div class="quest">
+    <div id="questIcon" class="check">🌱</div>
+    <h3 id="questTitle">Joo klaas vett</h3>
+    <p id="questText">Mitte selleks, et kõike korda teha. Lihtsalt väike hooliv tegu iseendale.</p>
+    <button id="questBtn" class="primary" onclick="completeQuest()">✓ Tegin ära</button>
+  </div>
+</section>
+
+<section id="aabits" class="screen">
+  <button class="back" onclick="show('home')">← Tagasi</button>
+  <h2>Vaimse tervise aabits 📖</h2>
+  <p class="sub">Lühidalt ja inimlikult.</p>
+  <div class="article"><b>Ärevus 😰</b>Ärevus võib panna keha ja mõtted väga valjult tööle. See ei tähenda, et sinuga on midagi valesti.</div>
+  <div class="article"><b>Depressioon 🌧️</b>Depressioon võib mõjutada meeleolu, energiat, und ja huvi asjade vastu. Abi küsimine on lubatud.</div>
+  <div class="article"><b>Üksindus 🥺</b>Üksindus võib olla valus isegi siis, kui inimesed on su ümber. Väike kontakt teise inimesega võib olla esimene samm.</div>
+  <div class="article"><b>Läbipõlemine 🌿</b>Kui koormus on pikalt liiga suur, võib keha ja vaim vajada puhkust ning tuge.</div>
+</section>
+
+<section id="human" class="screen">
+  <button class="back" onclick="show('home')">← Tagasi</button>
+  <h2>Küsi inimeselt 👤</h2>
+  <div class="panel"><b>Mõnikord on kõige parem rääkida päris inimesega.</b><br><br>AI võib olla esimene samm. Päris inimene võib olla järgmine.<br><br>See prototüüp näitab tulevast funktsiooni. Päris teenuses ühendatakse see väljaõppinud vastajaga.</div>
+</section>
+
+<section id="crisis" class="screen">
+  <button class="back" onclick="show('home')">← Tagasi</button>
+  <h2>Kui sul on praegu väga halb ❤️</h2>
+  <div class="panel"><b>Ma võtan sind tõsiselt.</b><br><br>Kui oled endale viga teinud või arvad, et võid seda kohe teha, ära jää üksi. Mine võimalusel usaldusväärse inimese juurde ja võta ühendust kohaliku hädaabiteenistusega.<br><br>Kui oled Eestis ja on vahetu oht, helista <b>112</b>.</div>
+  <div class="choices">
+    <button class="choice" onclick="show('chat')">💬 Räägin Bloomiga</button>
+    <button class="choice" onclick="show('human')">👤 Tahan päris inimesega rääkida</button>
+  </div>
+</section>
+
+</main>
+<nav class="nav">
+  <button onclick="show('home')"><span>🏠</span>Avaleht</button>
+  <button onclick="show('mood')"><span>💛</span>Tunne</button>
+  <button onclick="show('chat')"><span>💬</span>Bloom</button>
+  <button onclick="show('quest')"><span>🌱</span>Quest</button>
+</nav>
+</div>
+
+<script>
+const screens=['home','mood','chat','quest','aabits','human','crisis'];
+function show(id){
+  screens.forEach(s=>document.getElementById(s).classList.toggle('active',s===id));
+  window.scrollTo(0,0);
+}
+function add(who,text){
+  const d=document.createElement('div');
+  d.className='msg '+(who==='Bloom'?'bot':'me');
+  d.textContent=text;
+  document.getElementById('chatMessages').appendChild(d);
+  d.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function reply(t){
+  const s=t.toLowerCase();
+  if(s.includes('enesetap')||s.includes('enesetapmine')||s.includes('surra')||s.includes('tappa end')||s.includes('ei taha elada')){
+    return 'Mul on hea meel, et sa mulle sellest ütlesid. ❤️ Ma võtan sind tõsiselt. Kui oled praegu otseses ohus või oled endale midagi teinud, palun ära jää üksi ja võta kohe ühendust kohaliku hädaabiteenistusega. Kui oled Eestis, helista 112.';
+  }
+  if(s.includes('ärev')||s.includes('anx')){
+    return 'Ärevus võib panna keha ja mõtted väga valjult tööle. 🌿 Teeme ühe väikese asja: hinga aeglaselt sisse ja välja. Sa ei pea praegu kõike lahendama.';
+  }
+  if(s.includes('kurb')||s.includes('halb')||s.includes('nut')){
+    return 'Mul on kahju, et sul praegu raske on. 🌸 Sa ei pea seda kõike korraga kandma. Kui tahad, räägi mulle ühest asjast, mis praegu kõige rohkem haiget teeb.';
+  }
+  if(s.includes('üksik')||s.includes('lonely')){
+    return 'Üksindus võib olla väga valus isegi siis, kui inimesed on su ümber. 🫶 Kas sinu ümber on praegu keegi, kellele võiksid kasvõi ühe sõnumi saata?';
+  }
+  if(s.includes('vih')||s.includes('anger')){
+    return 'Ma kuulen, et sinus on praegu palju viha. Sa ei pea seda kohe ära kaotama. Võime kõigepealt proovida mõista, mis selle all on.';
+  }
+  if(s.includes('tere')||s.includes('hello')||s.includes('hi')){
+    return 'Hei. 🌸 Mul on hea meel sind siin näha. Kuidas sul päriselt läheb?';
+  }
+  return 'Ma kuulan. 🌸 Ma ei pruugi kõike õigesti mõista, aga saan sind kuulata. Mis on selle juures sinu jaoks kõige raskem?';
+}
+function send(){
+  const input=document.getElementById('chatInput');
+  const t=input.value.trim();
+  if(!t)return;
+  add('Me',t); input.value='';
+  setTimeout(()=>add('Bloom',reply(t)),250);
+}
+function mood(name,emoji){
+  show('chat');
+  add('Me',emoji+' '+name);
+  let text='Aitäh, et ütlesid. 🌸';
+  if(name==='Ärev') text='Aitäh, et ütlesid. Ärevus võib olla väga kurnav. Võime võtta ühe väikese sammu korraga.';
+  if(name==='Kurb') text='Mul on kahju, et sul raske on. 🌸 Sa ei pea praegu kõike lahendama.';
+  if(name==='Üksik') text='Aitäh, et ütlesid. Üksindus võib olla väga valus. Sa ei pea sellega üksi olema.';
+  if(name==='Vihane') text='Ma kuulen, et sinus on viha. Võime rahulikult uurida, mis selle taga on.';
+  if(name==='Stressis') text='Kui kõike on liiga palju, alustame ainult ühest väikesest asjast.';
+  if(name==='Väsinud') text='Väsimus väärib tähelepanu. Kas sul oleks võimalik täna endale veidi puhkust anda?';
+  if(name==='Hästi') text='Mul on hea meel seda kuulda. 🌸';
+  setTimeout(()=>add('Bloom',text),250);
+}
+const quests=[
+ ['🌱','Joo klaas vett','Väike hooliv tegu iseendale.'],
+ ['☀️','Ava kardinad','Lase tuppa natuke päevavalgust.'],
+ ['🚶','Mine 5 minutiks õue','Sa ei pea tegema pikka jalutuskäiku. Lihtsalt korraks välja.'],
+ ['🎵','Kuula üht lemmiklaulu','Vali üks laul, mis sulle midagi head meenutab.'],
+ ['💬','Kirjuta kellelegi','Kasvõi üks lihtne “Hei, kuidas sul läheb?”'],
+ ['🫶','Tee endale midagi head','Midagi väikest, mis on sulle päriselt meeldiv.']
+];
+let qi=0;
+function completeQuest(){
+  const q=quests[qi%quests.length];
+  document.getElementById('questIcon').textContent='🌸';
+  document.getElementById('questTitle').textContent='Tubli. Väike samm on ikkagi samm.';
+  document.getElementById('questText').textContent='Sa ei pea olema täiuslik. Kui oled valmis, võime proovida järgmist väikest asja.';
+  document.getElementById('questBtn').textContent='🌱 Järgmine väike samm';
+  document.getElementById('questBtn').onclick=nextQuest;
+}
+function nextQuest(){
+  qi++;
+  const q=quests[qi%quests.length];
+  document.getElementById('questIcon').textContent=q[0];
+  document.getElementById('questTitle').textContent=q[1];
+  document.getElementById('questText').textContent=q[2];
+  document.getElementById('questBtn').textContent='✓ Tegin ära';
+  document.getElementById('questBtn').onclick=completeQuest;
+}
+</script>
+</body>
+</html>
