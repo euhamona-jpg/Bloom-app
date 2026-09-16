@@ -64,10 +64,7 @@ function initChat(){el('chatbox').innerHTML='';addMsg('bloom',lang==='et'?"Hei. 
 window.sendMessage=async function(){
 var input=el('input'),t=input.value.trim();if(!t)return;
 input.value='';addMsg('user',t);
-if(lastBloom && /immediate danger|hurt yourself|ending your life|otseses ohus|endale haiget|ei taha enam elada/i.test(lastBloom.textContent||'') && /^(yes|jah|yes please|jah palun)$/i.test(t)){
-addMsg('bloom',lang==='et'?'Aitäh, et ütlesid. ❤️ Palun ära jää praegu üksi. Mine võimalusel usaldusväärse inimese juurde ja ütle talle, et vajad abi. Kui oled otseses ohus või oled endale juba haiget teinud või midagi sisse võtnud, võta kohe ühendust kohaliku hädaabiteenistusega või mine lähimasse erakorralise meditsiini osakonda. Kui saad, vii end eemale asjadest, millega võiksid endale haiget teha.':'Thank you for telling me. ❤️ Please do not stay alone right now. Go to a trusted person if you can and tell them you need help. If you are in immediate danger, or have already hurt yourself or taken something, contact your local emergency service now or go to the nearest emergency department. If you can, move away from anything you could use to hurt yourself.');
-return;
-}
+
 
  
  
