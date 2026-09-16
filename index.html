@@ -63,8 +63,10 @@ function addMsg(who,text){var d=document.createElement('div');d.className='msg '
 function initChat(){el('chatbox').innerHTML='';addMsg('bloom',lang==='et'?"Hei. Mina olen Bloom. 🌸\n\nSa ei pea mulle kõike korraga rääkima. Võid alustada täiesti väikesest asjast.\n\nKuidas sul praegu päriselt läheb?":"Hi. I’m Bloom. 🌸\n\nYou don’t have to tell me everything at once. You can start with something very small.\n\nHow are you really feeling right now?")}
 window.sendMessage=async function(){
 var input=el('input'),t=input.value.trim();if(!t)return;
-input.value='';addMsg('user',t);
-
+input.value='';addMsg('user',if(data.crisis){
+  addMsg('bloom',data.reply);
+  return;
+}
 
  
  
