@@ -64,11 +64,6 @@ function initChat(){el('chatbox').innerHTML='';addMsg('bloom',lang==='et'?"Hei. 
 window.sendMessage=async function(){
 var input=el('input'),t=input.value.trim();if(!t)return;
 input.value='';addMsg('user',t);
-var lastMsg=el('chatbox').querySelector('.msg.user:last-child');
-if(lastMsg && /^(yes|jah|yes please|jah palun)$/i.test(t)){
-addMsg('bloom',lang==='et'?'Aitäh, et vastasid. ❤️ Kui oled praegu otseses ohus või kardad, et võid endale haiget teha, palun helista kohe oma kohaliku hädaabiteenistuse numbrile või mine lähimasse erakorralise meditsiini osakonda. Kui võimalik, ära jää üksi.':'Thank you for answering. ❤️ If you are in immediate danger or think you may hurt yourself, please contact your local emergency service now or go to the nearest emergency department. If possible, stay with someone you trust.');
-return;
-}
 
 
  
