@@ -64,11 +64,11 @@ function initChat(){el('chatbox').innerHTML='';addMsg('bloom',lang==='et'?"Hei. 
 window.sendMessage=async function(){
 var input=el('input'),t=input.value.trim();if(!t)return;
 input.value='';addMsg('user',t);
-var crisis=/hurt myself|kill myself|suicide|don't want to live|want to die|self-harm|endale haiget|enesetap|ei taha elada|tahan surra/i.test(t.toLowerCase());
-if(crisis){
- addMsg('bloom',lang==='et'?"Aitäh, et mulle sellest rääkisid. ❤️ Ma võtan sind tõsiselt. Sa ei pea praegu kõike seletama. Kas sa oled praegu otseses ohus või oled endale juba midagi teinud?":"Thank you for telling me. ❤️ I take you seriously. You do not have to explain everything right now. Are you in immediate danger, or have you already hurt yourself?");
- return;
-}
+
+
+ 
+ 
+
 var btn=el('sendBtn');btn.disabled=true;btn.textContent='…';
 var history=[];
 var nodes=el('chatbox').querySelectorAll('.msg');
