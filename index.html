@@ -63,10 +63,7 @@ function addMsg(who,text){var d=document.createElement('div');d.className='msg '
 function initChat(){el('chatbox').innerHTML='';addMsg('bloom',lang==='et'?"Hei. Mina olen Bloom. 🌸\n\nSa ei pea mulle kõike korraga rääkima. Võid alustada täiesti väikesest asjast.\n\nKuidas sul praegu päriselt läheb?":"Hi. I’m Bloom. 🌸\n\nYou don’t have to tell me everything at once. You can start with something very small.\n\nHow are you really feeling right now?")}
 window.sendMessage=async function(){
 var input=el('input'),t=input.value.trim();if(!t)return;
-input.value='';addMsg('user',if(data.crisis){
-  addMsg('bloom',data.reply);
-  return;
-}
+input.value='';addMsg('user',t);
 
  
  
@@ -82,14 +79,9 @@ try{
  var data=await r.json();
  if(!r.ok)throw new Error(data.error||'Request failed');
  addMsg('bloom',data.reply|| (lang==='et'?'Ma kuulan. 🌸':'I’m listening. 🌸'));
-}catch(e){
- addMsg('bloom',lang==='et'?"Mul on praegu ühendusega väike probleem. Proovime uuesti. 🌸":"I’m having a small connection problem right now. Let’s try again. 🌸");
-}finally{btn.disabled=false;btn.textContent=L[lang].send;}
-};
-function renderMission(){var m=missions[mission%missions.length];if(lang==='et'){txt('qtitle',m[2]);txt('qtext',m[3])}else{txt('qtitle',m[0]);txt('qtext',m[1])}txt('qdone','')}
-window.completeQuest=function(){txt('qdone',L[lang].well);setTimeout(function(){mission=(mission+1)%missions.length;localStorage.setItem('bloomMission',mission);renderMission()},900)};
-function renderArticles(){var data=lang==='et'?[['Ärevus','Ärevus võib panna mõtted kiiresti jooksma ja keha pidevalt valvel olema. Väikesed maandavad harjutused, puhkus ja kellegagi rääkimine võivad aidata.'],['Depressioon','Depressioon võib mõjutada meeleolu, energiat, und, keskendumist ja lootust. See on rohkem kui lihtsalt halb päev.'],['Üksildus','Üksildane võib olla ka siis, kui inimesed on su ümber. Üks väike kontakt võib olla algus.'],['Läbipõlemine ja stress','Pikaajaline pinge võib jätta inimese vaimselt ja füüsiliselt kurnatuks. Puhkus, piirid, tugi ja praktilised muutused on olulised.']]:[['Anxiety','Anxiety can make thoughts race and the body feel on alert. Small grounding steps, rest and talking to someone can help.'],['Depression','Depression can affect mood, energy, sleep, concentration and hope. It is more than simply having a bad day.'],['Loneliness','You can feel lonely even when other people are around. One small connection can be a beginning.'],['Burnout & stress','Long-lasting pressure can leave you mentally and physically exhausted. Rest, boundaries, support and practical changes matter.']];var box=el('articles');box.innerHTML='';for(var i=0;i<data.length;i++){var d=document.createElement('div');d.className='article';var b=document.createElement('b');b.textContent=data[i][0];var s=document.createElement('span');s.textContent=data[i][1];d.appendChild(b);d.appendChild(s);box.appendChild(d)}}
-window.humanAlert=function(){alert(L[lang].humanSoon)};window.crisisAlert=function(n){alert(n===1?(lang==='et'?'Kui oled otseses ohus, helista kohalikule hädaabinumbrile või mine lähimasse erakorralise meditsiini osakonda.':'If you are in immediate danger, call your local emergency number or go to the nearest emergency department.'):(lang==='et'?'Palun mine usaldusväärse inimese juurde ja ütle talle, et vajad abi. Kui tunned end ebaturvaliselt, ära jää üksi.':'Please go to a trusted person and tell them you need help. Do not stay alone if you feel unsafe.'))};
-render();el('language').value=lang;el('input').addEventListener('keydown',function(e){if(e.key==='Enter')window.sendMessage()});
+
+
+
+
 })();
 </script></body></html>
