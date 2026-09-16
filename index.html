@@ -66,7 +66,7 @@ var input=el('input'),t=input.value.trim();if(!t)return;
 input.value='';addMsg('user',t);
 var lastMsg=el('chatbox').querySelector('.msg.user:last-child');
 if(lastMsg && /^(yes|jah|yes please|jah palun)$/i.test(t)){
-addMsg('bloom',lang==='et'?'Aitäh, et vastasid. ❤️ Kas sa oled praegu otseses ohus või oled endale juba midagi teinud? Kui jah, helista kohe 112 või mine lähimasse erakorralise meditsiini osakonda. Kui saad, jää kellegagi koos.':'Thank you for answering. ❤️ Are you in immediate danger, or have you already hurt yourself? If yes, contact your local emergency service now or go to the nearest emergency department. If you can, stay with someone.');
+addMsg('bloom',lang==='et'?'Aitäh, et vastasid. ❤️ Kui oled praegu otseses ohus või kardad, et võid endale haiget teha, palun helista kohe oma kohaliku hädaabiteenistuse numbrile või mine lähimasse erakorralise meditsiini osakonda. Kui võimalik, ära jää üksi.':'Thank you for answering. ❤️ If you are in immediate danger or think you may hurt yourself, please contact your local emergency service now or go to the nearest emergency department. If possible, stay with someone you trust.');
 return;
 }
 
