@@ -79,7 +79,7 @@ try{
  var data=await r.json();
  if(!r.ok)throw new Error(data.error||'Request failed');
  addMsg('bloom',data.reply|| (lang==='et'?'Ma kuulan. 🌸':'I’m listening. 🌸'));
-
+}catch(e){addMsg('bloom',lang==='et'?'Ühendusega tekkis väike probleem. Proovime uuesti. 🌸':'I’m having a small connection problem. Let’s try again. 🌸');}
 
 
 
