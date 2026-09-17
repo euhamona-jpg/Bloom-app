@@ -21,7 +21,19 @@ function isHighRiskDistress(text) {
 
   return /(i\s+can'?t\s+go\s+on|i\s+cannot\s+go\s+on|i\s+don'?t\s+know\s+what\s+to\s+do\s+anymore|i\s+can'?t\s+take\s+this\s+anymore|everything\s+feels\s+too\s+much|there'?s\s+no\s+way\s+out|i'?m\s+done|life\s+isn'?t\s+worth\s+living|ma\s+ei\s+jaksa\s+enam|ma\s+ei\s+tea\s+enam\s+mida\s+teha|kõik\s+on\s+liiga\s+palju|pole\s+enam\s+väljapääsu|ma\s+olen\s+läbi)/i.test(t);
 }
+function crisisFollowUp(history) {
+  if (!Array.isArray(history) || !history.length) return false;
 
+  const last = [...history].reverse().find(
+    m => m && m.role === 'assistant' && typeof m.content === 'string'
+  );
+
+  if (!last) return false;
+
+  const t = last.content.toLowerCase();
+
+  return /are you in immediate danger|have you already hurt yourself|thinking about hurting yourself|ending your life|otseses ohus|endale haiget|ei taha enam elada/.test(t);
+}
 function cleanReply(text) {
   return String(text || '')
     .replace(/\*\*(.*?)\*\*/g, '$1')
@@ -71,7 +83,30 @@ export default async function handler(req, res) {
         reply: safetyQuestion
       });
     }
+const safetyContext = crisisFollowUp(history);
 
+if (safetyContext) {
+  const yes = /^(yes|jah|yeah|yep|maybe|ma ei tea|võib-olla|not sure|unsure|not yet)/i.test(text);
+  const no = /^(no|ei|nope|ei ole)/i.test(text);
+
+  if (yes && !no) {
+    return res.status(200).json({
+      crisis: true,
+      reply: lang === 'et'
+        ? 'Aitäh, et vastasid. ❤️ Palun ära jää praegu üksi. Mine võimalusel mõne usaldusväärse inimese juurde ja ütle talle, et vajad abi. Kui võid endale kohe viga teha või oled endale juba haiget teinud, helista kohalikule hädaabinumbrile või mine lähimasse erakorralise meditsiini osakonda. Kas oled praegu otseses ohus või on sul konkreetne plaan või ligipääs millelegi, millega võiksid endale haiget teha?'
+        : 'Thank you for telling me. ❤️ Please do not stay alone right now. Go to someone you trust and tell them you need help. If you may hurt yourself soon or have already hurt yourself, contact your local emergency service now or go to the nearest emergency department. Are you in immediate danger right now, or do you have a specific plan or access to something you could use to hurt yourself?'
+    });
+  }
+
+  if (no) {
+    return res.status(200).json({
+      crisis: true,
+      reply: lang === 'et'
+        ? 'Aitäh, et vastasid. ❤️ Mul on hea meel, et sa ei ole endale haiget teinud. Sa väärid praegu ikkagi tuge. Kui saad, jää kellegi usaldusväärse lähedale. Võime võtta ühe väikese sammu korraga. Kas tahad mulle rääkida, mis on sind sellesse punkti toonud, või tahad, et lihtsalt jääksin sinuga siia?'
+        : 'Thank you for telling me. ❤️ I’m glad you haven’t hurt yourself. You still deserve support right now. If you can, stay near someone you trust. We can take this one small step at a time. Do you want to tell me what has brought you to this point, or would you rather I just stay here with you for a while?'
+    });
+  }
+}
     const moderation = await client.moderations.create({
       model: 'omni-moderation-latest',
       input: text
