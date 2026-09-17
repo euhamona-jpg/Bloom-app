@@ -72,7 +72,14 @@ export default async function handler(req, res) {
         reply: crisisReplies[lang]
       });
     }
-
+if (/^not yet$/i.test(text)) {
+  return res.status(200).json({
+    crisis: true,
+    reply: lang === 'et'
+      ? 'Aitäh, et vastasid. ❤️ Palun ära jää praegu üksi. Mine võimalusel mõne usaldusväärse inimese juurde ja ütle talle, et vajad abi. Kui võid endale kohe viga teha või oled endale juba haiget teinud, helista kohalikule hädaabinumbrile või mine lähimasse erakorralise meditsiini osakonda. Kas oled praegu otseses ohus või on sul konkreetne plaan või ligipääs millelegi, millega võiksid endale haiget teha?'
+      : 'Thank you for telling me. ❤️ Please do not stay alone right now. Go to someone you trust and tell them you need help. If you may hurt yourself soon or have already hurt yourself, contact your local emergency service now or go to the nearest emergency department. Are you in immediate danger right now, or do you have a specific plan or access to something you could use to hurt yourself?'
+  });
+}
     if (isHighRiskDistress(text)) {
       const safetyQuestion = lang === 'et'
         ? 'Mul on kahju, et sul on praegu nii raske. ❤️ Ma tahan ühe olulise asja üle kontrollida: kas sa mõtled praegu endale haiget teha või et sa ei taha enam elada?'
